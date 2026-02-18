@@ -1,12 +1,12 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"go-edge/cmd/internal/types"
+)
 
 func AuthRoute(c *gin.Context) {
-	var json struct {
-		User     string `json:"user"`
-		Password string `json:"password"`
-	}
+	var json types.Json
 
 	if err := c.BindJSON(&json); err != nil {
 		c.JSON(400, gin.H{
